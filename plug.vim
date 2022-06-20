@@ -1,8 +1,4 @@
-if has("nvim")
-  let g:plug_home = stdpath('data') . '/plugged'
-endif
-
-call plug#begin()
+call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -30,7 +26,5 @@ if has("nvim")
   Plug 'windwp/nvim-ts-autotag'
 endif
 
-Plug 'groenewege/vim-less', { 'for': 'less' }
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-
 call plug#end()
+
