@@ -5,12 +5,13 @@ Plug 'tpope/vim-rhubarb'
 
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
+  Plug 'tpope/vim-surround'
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
-  Plug 'tami5/lspsaga.nvim'
+  Plug 'glepnir/lspsaga.nvim'
   Plug 'folke/lsp-colors.nvim'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'hrsh7th/cmp-nvim-lsp'
