@@ -8,6 +8,8 @@ scriptencoding utf-8
 " stop loading config if it's on tiny or small
 if !1 | finish | endif
 
+set noswapfile
+set relativenumber
 set nocompatible
 set number
 syntax enable
@@ -24,8 +26,8 @@ set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
-set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
+set nohlsearch
 
 " incremental substitution (neovim)
 if has('nvim')

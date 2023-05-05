@@ -2,11 +2,18 @@ if !exists('g:lspconfig')
   finish
 endif
 
+" Mappings
+nnoremap <leader>rn <Cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <leader>dn <Cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <leader>dN <Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+
 lua << EOF
---vim.lsp.set_log_level("debug")
+   vim.lsp.set_log_level("debug")
 EOF
 
 lua << EOF
+
+
 local nvim_lsp = require('lspconfig')
 local protocol = require'vim.lsp.protocol'
 
@@ -23,10 +30,10 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  -- buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+--  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+--  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+--  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+--  buf_set_keymap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
   -- formatting
   if client.server_capabilities.documentFormattingProvider then
@@ -68,13 +75,27 @@ end
 
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
+  protocol.make_client_capabilities()
 )
+
+-- CSS 
+nvim_lsp.cssmodules_ls.setup{}
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   capabilities = capabilities
+}
+-- JS 
+nvim_lsp.eslint.setup{}
+
+local pid = vim.fn.getpid()
+local omnisharp_bin = "C:/Install/OmniSharp/OmniSharp.exe"
+
+nvim_lsp.omnisharp.setup {
+  capabilities = capabilities,
+  cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },  
+  on_attach = on_attach,
 }
 
 nvim_lsp.diagnosticls.setup {

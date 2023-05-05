@@ -1,12 +1,15 @@
 " Description: Keymaps
-let mapleader = "!"
+
+let mapleader = " "
 
 nnoremap <S-C-p> "0p
 " Delete without yank
 nnoremap <leader>d "_d
 nnoremap x "_x
 
-"
+" NerdTree Menu
+nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+
 " Increment/decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
@@ -46,8 +49,9 @@ nmap <Tab> :tabnext<Return>
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
+nnoremap sc :only<CR>
+nnoremap st :tabonly<CR>
 " Move window
-nmap <Space> <C-w>w
 map s<left> <C-w>h
 map s<up> <C-w>k
 map s<down> <C-w>j
@@ -61,3 +65,7 @@ nmap <C-w><left> <C-w><
 nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
+
+" Custom Command DotNet Core
+autocmd FileType cs nnoremap <leader><C-b> :vsplit <bar> !dotnet build <bar> <C-W><C-w><CR>
+autocmd FileType cs nnoremap <leader><C-r> :!dotnet run<CR>
