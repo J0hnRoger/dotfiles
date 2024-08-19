@@ -1,22 +1,7 @@
-# BMM Env Variables
-$env:Portal = "C:/Dev/BoostMyMail.Portal/BoostMyMail.Portal"
-$env:Front = "C:/Dev/BoostMyMail.Portal/BoostMyMail.Portal/ClientApp"
-$env:Service = "C:/Dev/BoostMyMail.Service/BoostMyMail.Service/BoostMyMail.Service"
-$env:Ent = "C:/Dev/BoostMyMail.Entities/BoostMyMail.Entities"
-$env:Core = "C:/Dev/BoostMyMail.Core/BoostMyMail.Core"
-$env:BackOffice = "C:/Dev/BoostMyMail.BackOfficeBmm"
-
-# BMM Links 
-$env:Repo = "https://boostmymail.visualstudio.com/BoostMyMail/_git/BoostMyMail.Portal"
-$env:Wiki = "https://boostmymail.visualstudio.com/BoostMyMail/_wiki/wikis/BoostMyMail.wiki/28/Sommaire"
-$env:Bck = "https://boostmymail.visualstudio.com/BoostMyMail/_backlogs/backlog/BoostMyMail%20Team/Features"
-$env:Sprint = "https://boostmymail.visualstudio.com/BoostMyMail/_sprints/%40default/BoostMyMail%20Team"
-$env:Rmap = "https://boostmymail.visualstudio.com/BoostMyMail/_deliveryplans%2Fplan/2d1a593d-7489-40f0-847a-93850f4e5510"
-
-$nvim = "C:\Users\JonathanROGER\AppData\Local\nvim"
+$nvim = "$HOME\AppData\Local\nvim"
 
 # NVIM Config
-$env:XDG_CONFIG_HOME="C:\Users\JonathanROGER\AppData\Local\dotfiles"
+$env:XDG_CONFIG_HOME="$HOME\.dotfiles"
 
 # Quick Actions
 
@@ -76,14 +61,14 @@ function Remove-LocalBranches {
   }
 }
 
-$MYVIM = "C:\Users\JonathanROGER\AppData\Local\nvim\init.lua"
+$MYVIM = "$HOME\AppData\Local\nvim\init.lua"
 
-$NVIM = "C:\Users\JonathanROGER\AppData\Local\nvim"
+$NVIM = "$HOME\AppData\Local\nvim"
 
 $PERSO = "C:\Personal\"
 
-$TASK = "C:/Users/JonathanROGER/tasks/"
-Write-Host "Welcome to BMM Shell: $MYVIM"
+$TASK = "$HOME/tasks/"
+Write-Host "Welcome to Shell: $MYVIM"
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/catppuccin_macchiato.omp.json" | Invoke-Expression
 
@@ -141,4 +126,4 @@ function CopyCurrentPath {
 
 Set-Alias -Name cpwd -Value CopyCurrentPath
 
-Set-Alias -Name rider -Value "C:\Users\JonathanROGER\AppData\Local\JetBrains\JetBrains Rider 2023.3.4\bin\rider64.exe"
+Set-Alias -Name rider -Value "$HOME\AppData\Local\JetBrains\JetBrains Rider 2023.3.4\bin\rider64.exe"
