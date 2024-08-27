@@ -173,7 +173,7 @@
                 "backgroundImageOpacity": 0.04,
                 "backgroundImageStretchMode": "uniform",
                 "colorScheme": "Blue Matrix",
-                "commandline": "pwsh.exe",
+                "commandline": "C:/Program Files/PowerShell/7/pwsh.exe",
                 "compatibility.reloadEnvironmentVariables": false,
                 "elevate": false,
                 "experimental.retroTerminalEffect": false,

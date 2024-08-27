@@ -25,30 +25,63 @@ if (Test-Path $previewTerminalSettingsPath) {
     # Copy the custom settings.json from dotfiles to Windows Terminal config directory
     Copy-Item $dotfilesTerminalSettings $previewTerminalSettingsPath -Force
     Write-Host "Custom settings.json copied to Windows Terminal directory."
-} else {
+}
+else {
     Write-Host "Windows Terminal is not installed or settings.json was not found."
 }
 
-# Install and configure NVIM
-
-
-# Check if Neovim is installed
-if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
-    Write-Host "Neovim is not installed. Installing via Chocolatey..."
-    if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
-        Write-Host "Chocolatey is not installed. Installing Chocolatey..."
-        Set-ExecutionPolicy Bypass -Scope Process -Force; `
+# Installer Tool : Chocolatey
+if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
+    Write-Host "Chocolatey is not installed. Installing Chocolatey..."
+    Set-ExecutionPolicy Bypass -Scope Process -Force; `
         [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
-        iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+        # TODO - utiliser Powershell rest call
+        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
+
+# Install and configure tools from chocolatey 
+$jsonFilePath = '.\choco.json'
+$packages = Get-Content $jsonFilePath | ConvertFrom-Json
+
+foreach ($package in $packages.packages) {
+    $packageName = $package.name
+    $targetVersion = $package.version
+
+    # Check if exists 
+    $installedPackage = choco list --local-only --exact $packageName | Select-String -Pattern "^$packageName " | ForEach-Object { $_ -replace "^$packageName ", "" }
+
+    if ($installedPackage) {
+        # Comparer la version installée avec la version désirée
+        if ($installedPackage -ne $targetVersion) {
+            Write-Host "$packageName is installed but not at the desired version ($installedPackage). Updating to version $targetVersion..."
+            if ($targetVersion -eq "latest") {
+                choco upgrade $packageName -y
+            }
+            else {
+                choco upgrade $packageName --version=$targetVersion -y
+            }
+            Write-Host "$packageName updated to new version: $targetVersion"
+        }
+        else {
+            Write-Host "$packageName is already installed and at the correct version ($installedPackage)."
+        }
     }
-    choco install neovim -y
-} else {
-    Write-Host "Neovim is already installed."
+    else {
+        Write-Host "$packageName is not installed. Installing version $targetVersion..."
+        if ($targetVersion -eq "latest") {
+            choco install $packageName -y --params "/ALLUSERS" --force
+        }
+        else {
+            choco install $packageName --version=$targetVersion -y --params "/ALLUSERS" --force
+        }
+        Write-Host "$packageName installed at version $targetVersion."
+    }
 }
 
 # Backup existing Neovim configuration if it exists
 if (Test-Path $nvimConfigPath) {
-    $backupPath = "$nvimConfigPath.bak"
+    $currentDate = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+    $backupPath = "$nvimConfigPath-$currentDate.bak"
     Write-Host "Backing up existing Neovim configuration to $backupPath"
     Rename-Item $nvimConfigPath $backupPath -Force
 }
@@ -63,7 +96,8 @@ if (Test-Path $dotfilesNvimPath) {
     # Create symbolic links 
     New-Item -ItemType SymbolicLink -Path "$nvimConfigPath\init.vim" -Target "$dotfilesNvimPath\init.vim"
     Write-Host "Neovim configuration linked from dotfiles."
-} else {
+}
+else {
     Write-Host "Neovim configuration in dotfiles not found."
 }
 

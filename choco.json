@@ -1,0 +1,36 @@
+{
+  "packages": [
+    {
+      "name": "vscode",
+      "version": "latest"
+    },
+    {
+      "name": "git",
+      "version": "latest"
+    },
+    {
+      "name": "nodejs",
+      "version": "22.7.0"
+    },
+    {
+      "name": "neovim",
+      "version": "latest"
+    },
+    {
+      "name": "mingw",
+      "version": "latest"
+    },
+    {
+      "name": "azd",
+      "version": "latest"
+    },
+    {
+      "name": "az",
+      "version": "latest"
+    },
+    {
+      "name": "pwsh",
+      "version": "latest"
+    }
+  ]
+}
