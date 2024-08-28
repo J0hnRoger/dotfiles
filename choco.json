@@ -31,6 +31,10 @@
     {
       "name": "pwsh",
       "version": "latest"
+    },
+    {
+      "name": "autohotkey",
+      "version": "latest"
     }
   ]
 }
