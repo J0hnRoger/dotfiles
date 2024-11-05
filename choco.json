@@ -32,6 +32,13 @@
       "name": "pwsh",
       "version": "latest"
     },
+<<<<<<< HEAD
     { "name": "aider", "version": "latest" }
+=======
+    {
+      "name": "autohotkey",
+      "version": "latest"
+    }
+>>>>>>> 043084a9f1001f44d15dcd7e4abeeeb908a23676
   ]
 }
