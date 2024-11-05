@@ -116,11 +116,14 @@ $secretName = "jrr-openai-apikey"
 
 $secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $secretName
 $OPEN_AI_KEY = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue))
-if ($OPEN_AI_KEY -eq $null)
+if ($OPEN_AI_KEY -eq $null){
   Write-Host "La clé OpenAI est null ou vide."
+}
 
 setx OPENAI_API_KEY $OPEN_AI_KEY
 
+python -m pip install --upgrade pip
+python -m pip install httpx
 python -m pip install aider-chat
 
 # To work with GPT-4:
