@@ -101,6 +101,25 @@ else {
     Write-Host "Neovim configuration in dotfiles not found."
 }
 
+$dotfilesPath = "$HOME\.dotfiles"
+$aiderConfigPath = "$HOME\.aider.conf.yml"
+$dotfilesAiderConfigPath = "$dotfilesPath\.aider.conf.yml"
+
+# Check if the .aider.conf.yml exists in dotfiles
+if (Test-Path $dotfilesAiderConfigPath) {
+    # Remove existing symlink if it exists
+    if (Test-Path $aiderConfigPath) {
+        Remove-Item $aiderConfigPath -Force
+    }
+    
+    # Create symbolic link
+    New-Item -ItemType SymbolicLink -Path $aiderConfigPath -Target $dotfilesAiderConfigPath
+    Write-Host ".aider.conf.yml symlink created in $HOME."
+}
+else {
+    Write-Host ".aider.conf.yml not found in dotfiles."
+}
+
 # Additional setup: Install plugins using a plugin manager (if applicable)
 Write-Host "Setting up Neovim plugins..."
 nvim --headless +PlugInstall +qall  # Example with vim-plug, modify according to your plugin manager
