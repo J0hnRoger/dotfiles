@@ -122,6 +122,26 @@ if ($OPEN_AI_KEY -eq $null){
 
 setx OPENAI_API_KEY $OPEN_AI_KEY
 
+# Définir les chemins
+$dotfilesAiderConfigPath = "$dotfilesPath\.aider.conf.yml"
+$homeAiderConfigPath = "$HOME\.aider.conf.yml"
+
+# Vérifier si un fichier de configuration existe déjà dans $HOME, le sauvegarder si nécessaire
+if (Test-Path $homeAiderConfigPath) {
+    Copy-Item $homeAiderConfigPath "$homeAiderConfigPath.bak"
+    Write-Host "Backup of existing .aider.conf.yml created at $homeAiderConfigPath.bak"
+    Remove-Item $homeAiderConfigPath -Force
+}
+
+# Créer le lien symbolique
+if (Test-Path $dotfilesAiderConfigPath) {
+    New-Item -ItemType SymbolicLink -Path $homeAiderConfigPath -Target $dotfilesAiderConfigPath
+    Write-Host "Symbolic link for .aider.conf.yml created at $homeAiderConfigPath."
+}
+else {
+    Write-Host "The aider config file does not exist in dotfiles. Please create $dotfilesAiderConfigPath."
+}
+
 python -m pip install --upgrade pip
 python -m pip install httpx
 python -m pip install aider-chat
