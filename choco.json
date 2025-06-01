@@ -29,6 +29,10 @@
       "version": "latest"
     },
     {
+      "name": "azurepowershell",
+      "version": "latest"
+    },
+    {
       "name": "cursoride",
       "version": "latest"
     },
@@ -49,7 +53,99 @@
       "version": "latest"
     },
     {
-      "name": "jq",
+      "name": "dotnet-sdk",
+      "version": "latest"
+    },
+    {
+      "name": "visualstudio2022professional",
+      "version": "latest"
+    },
+    {
+      "name": "visualstudio2022buildtools",
+      "version": "latest"
+    },
+    {
+      "name": "docker-desktop",
+      "version": "latest"
+    },
+    {
+      "name": "postman",
+      "version": "latest"
+    },
+    {
+      "name": "obsidian",
+      "version": "latest"
+    },
+    {
+      "name": "1password",
+      "version": "latest"
+    },
+    {
+      "name": "brave",
+      "version": "latest"
+    },
+    {
+      "name": "powertoys",
+      "version": "latest"
+    },
+    {
+      "name": "wsl",
+      "version": "latest"
+    },
+    {
+      "name": "datagrip",
+      "version": "latest"
+    },
+    {
+      "name": "rider",
+      "version": "latest"
+    },
+    {
+      "name": "oh-my-posh",
+      "version": "latest"
+    },
+    {
+      "name": "fd",
+      "version": "latest"
+    },
+    {
+      "name": "glazewm",
+      "version": "latest"
+    },
+    {
+      "name": "gitui",
+      "version": "latest"
+    },
+    {
+      "name": "python",
+      "version": "latest"
+    },
+    {
+      "name": "blender",
+      "version": "latest"
+    },
+    {
+      "name": "obs-studio",
+      "version": "latest"
+    },
+    {
+      "name": "figma",
+      "version": "latest"
+    },
+    {
+      "name": "spotify",
+      "version": "latest"
+    },
+    {
+      "name": "teams",
+      "version": "latest"
+    },
+    {
+      "name": "zoom",
+      "version": "latest"
+    },
+    {
+      "name": "lmstudio",
       "version": "latest"
     }
   ]
