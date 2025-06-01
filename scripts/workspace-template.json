@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "<replace-with-worktree-path>"
+    }
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#4CAF50",
+      "titleBar.activeForeground": "#FFFFFF"
+    }
+  }
+}

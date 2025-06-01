@@ -36,9 +36,20 @@
       "name": "pwsh",
       "version": "latest"
     },
-    { "name": "aider", "version": "latest" },
+    {
+      "name": "aider",
+      "version": "latest"
+    },
     {
       "name": "autohotkey",
+      "version": "latest"
+    },
+    {
+      "name": "kubernetes-cli",
+      "version": "latest"
+    },
+    {
+      "name": "jq",
       "version": "latest"
     }
   ]

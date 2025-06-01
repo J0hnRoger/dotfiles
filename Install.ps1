@@ -161,10 +161,27 @@ else {
     Write-Host "The aider config file does not exist in dotfiles. Please create $dotfilesAiderConfigPath."
 }
 
+
+# Créer le lien symbolique pour les fichiers de conf cursor
+$dotfilesPath = "$env:USERPROFILE\.dotfiles\cursor"
+$cursorUserPath = "$env:APPDATA\Cursor\User"
+
+# Supprimer les fichiers existants si besoin
+Remove-Item "$cursorUserPath\settings.json" -Force
+Remove-Item "$cursorUserPath\keybindings.json" -Force
+Remove-Item "$cursorUserPath\snippets" -Recurse -Force
+
+# Créer les symlinks
+New-Item -ItemType SymbolicLink -Path "$cursorUserPath\settings.json" -Target "$dotfilesPath\settings.json"
+New-Item -ItemType SymbolicLink -Path "$cursorUserPath\keybindings.json" -Target "$dotfilesPath\keybindings.json"
+New-Item -ItemType SymbolicLink -Path "$cursorUserPath\snippets" -Target "$dotfilesPath\snippets"
+
 python -m pip install --upgrade pip
 python -m pip install httpx
 python -m pip install aider-chat
 
 # To work with GPT-4:
 aider --4o --openai-api-key $OPEN_AI_KEY
+
+
 
