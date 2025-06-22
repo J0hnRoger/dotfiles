@@ -140,6 +140,14 @@
     {
       "name": "lmstudio",
       "version": "latest"
+    },
+    {
+      "name": "jq",
+      "version": "latest"
+    },
+    {
+      "name": "yq",
+      "version": "latest"
     }
   ]
 }
