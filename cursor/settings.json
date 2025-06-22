@@ -1,0 +1,59 @@
+{
+    "window.commandCenter": 1,
+    "vim.normalModeKeyBindings": [
+        {
+        "before": ["<leader>", "a"],
+        "commands": ["vscode-harpoon.addEditor"]
+        },
+        {
+        "before": ["<leader>", "e"],
+        "commands": ["vscode-harpoon.editEditors"]
+        },
+        {
+        "before": ["<leader>", "p", "e"],
+        "commands": ["vscode-harpoon.editorQuickPick"]
+        },
+        {
+        "before": ["<leader>", "1"],
+        "commands": ["vscode-harpoon.gotoEditor1"]
+        }
+  ],
+  "leetcode.defaultLanguage": "typescript",
+  "leetcode.workspaceFolder": "c:\\Personal\\leet-code",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDragAndDrop": false,
+  "git.openRepositoryInParentFolders": "always",
+  "vim.handleKeys": {
+        "<C-w>": false
+},
+"workbench.colorTheme": "Flate Arc",
+"[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+},
+"[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+},
+"vim.smartRelativeLine": true,
+"[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+},
+"redhat.telemetry.enabled": false,
+"vscode-edge-devtools.webhintInstallNotification": true,
+"[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+},
+"[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+},
+"leetcode.hint.configWebviewMarkdown": false,
+"codesnap.backgroundColor": "#1f1f1f",
+"javascript.updateImportsOnFileMove.enabled": "always",
+"[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+},
+"window.newWindowProfile": "Default",
+"workbench.editor.enablePreview": false,
+"powershell.promptToUpdatePowerShell": false,
+"bicep.enableSurveys": false,
+"database-client.autoSync": true,
+}

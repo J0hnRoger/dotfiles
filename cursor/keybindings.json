@@ -1,0 +1,69 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+shift+l t",
+        "command": "leetcode.testSolution"
+    },
+    {
+        "key": "ctrl+shift+l p",
+        "command": "leetcode.pickOne"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "vscode-harpoon.gotoEditor1"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "vscode-harpoon.gotoEditor2"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "vscode-harpoon.gotoEditor3"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "vscode-harpoon.addEditor"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "vscode-harpoon.gotoEditor4"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-extension.vim_ctrl+e",
+        "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "vscode-harpoon.editorQuickPick"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "aichat.focuschatpaneaction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "-workbench.action.chat.sendToNewChat",
+        "when": "chatInputHasText && inChatInput && !chatSessionRequestInProgress"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "editor.action.addSymbolToChat"
+    },
+    {
+        "key": "ctrl+alt+enter",
+        "command": "-editor.action.replaceAll",
+        "when": "editorFocus && findWidgetVisible"
+    },
+    {
+        "key": "ctrl+alt+enter",
+        "command": "-search.action.replaceAll",
+        "when": "replaceActive && searchViewletVisible && !findWidgetVisible"
+    }
+]

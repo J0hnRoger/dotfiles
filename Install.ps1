@@ -161,10 +161,40 @@ else {
     Write-Host "The aider config file does not exist in dotfiles. Please create $dotfilesAiderConfigPath."
 }
 
+
+# Créer le lien symbolique pour les fichiers de conf cursor
+$dotfilesPath = "$env:USERPROFILE\.dotfiles\cursor"
+$cursorUserPath = "$env:APPDATA\Cursor\User"
+
+# Supprimer les fichiers existants si besoin
+Remove-Item "$cursorUserPath\settings.json" -Force
+Remove-Item "$cursorUserPath\keybindings.json" -Force
+Remove-Item "$cursorUserPath\snippets" -Recurse -Force
+
+# Créer les symlinks
+New-Item -ItemType SymbolicLink -Path "$cursorUserPath\settings.json" -Target "$dotfilesPath\settings.json"
+New-Item -ItemType SymbolicLink -Path "$cursorUserPath\keybindings.json" -Target "$dotfilesPath\keybindings.json"
+New-Item -ItemType SymbolicLink -Path "$cursorUserPath\snippets" -Target "$dotfilesPath\snippets"
+
 python -m pip install --upgrade pip
 python -m pip install httpx
 python -m pip install aider-chat
 
 # To work with GPT-4:
 aider --4o --openai-api-key $OPEN_AI_KEY
+
+
+# SSH Configuration
+Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+
+Get-Service ssh-agent
+
+Set-Service -Name sshd -StartupType 'Automatic'
+if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyContinue | Select-Object Name, Enabled)) {
+    Write-Output "Firewall Rule 'OpenSSH-Server-In-TCP' does not exist, creating it..."
+    New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+} else {
+    Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
+}
 
